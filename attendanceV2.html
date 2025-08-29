@@ -155,7 +155,7 @@
     <textarea id="output" readonly placeholder="Your attendance text will appear here..."></textarea>
 
     <script>
-        // Your original JavaScript code, with a few modifications for the new UI
+        // Array
         const students = [
             { name: "Kruti Deepa", roll: 74 }, { name: "Kumar Sabhyasachi", roll: 75 },
             { name: "KumKum Mandal", roll: 76 }, { name: "Laximdar Birua", roll: 77 },
@@ -188,6 +188,7 @@
         ];
 
         const studentListDiv = document.getElementById('studentList');
+        //sorting in ascending order.
         const sortedStudents = [...students].sort((a, b) => a.roll - b.roll);
         
         // This DOMContentLoaded ensures the script runs after the page loads
@@ -206,7 +207,7 @@
             const [year, month, day] = dateString.split("-");
             return `${day}/${month}/${year.slice(2)}`;
         }
-
+        //text generator button
         function generateText() {
             const date = document.getElementById('date').value;
             const subject = document.getElementById('subject').value;
@@ -219,7 +220,7 @@
             const formatted = `Class: ABIT CSE 2024-2028, Section-B\nSubject: ${subject}\nDate: ${formatDate(date)}\n\nPresent:\n${present.map(p => '- ' + p).join('\n')}`;
             document.getElementById('output').value = formatted;
         }
-
+        //copy button
         function copyText() {
             const output = document.getElementById('output');
             output.select();
@@ -227,7 +228,7 @@
             alert('Copied to clipboard!');
         }
 
-        // Service Worker registration for offline functionality
+        // registration for offline functionality
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const serviceWorkerCode = `
@@ -257,4 +258,5 @@
         }
     </script>
 </body>
+
 </html>
